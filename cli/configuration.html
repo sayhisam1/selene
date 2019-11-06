@@ -153,7 +153,7 @@
 <p>Configuration files are placed in the directory you are running selene in and are named <strong>selene.toml</strong>. As the name suggests, the configurations use the <a href="https://github.com/toml-lang/toml">Tom's Obvious, Minimal Language (TOML)</a> format. It is recommended you quickly brush up on the syntax, though it is very easy.</p>
 <h2><a class="header" href="#changing-the-severity-of-lints" id="changing-the-severity-of-lints">Changing the severity of lints</a></h2>
 <p>You can change the severity of lints by entering the following into selene.toml:</p>
-<pre><code class="language-toml">[config]
+<pre><code class="language-toml">[rules]
 lint_1 = &quot;severity&quot;
 lint_2 = &quot;severity&quot;
 ...
@@ -167,13 +167,13 @@ lint_2 = &quot;severity&quot;
 <p>Note that &quot;deny&quot; and &quot;warn&quot; are effectively the same, only warn will give orange text while error gives red text, and they both have different counters.</p>
 <h2><a class="header" href="#configuring-specific-rules" id="configuring-specific-rules">Configuring specific rules</a></h2>
 <p>You can configure specific rules by entering the following into selene.toml:</p>
-<pre><code class="language-toml">[rules]
+<pre><code class="language-toml">[config]
 rule1 = ...
 rule2 = ...
 ...
 </code></pre>
 <p>Where the value is whatever the special configuration of that rule is. You can learn these on the lints specific page in the <a href="../lints/index.html">list of lints</a>. For example, if we wanted to allow empty if branches if the contents contain comments, then we would write:</p>
-<pre><code class="language-toml">[rules]
+<pre><code class="language-toml">[config]
 empty_if = { comments_count = false }
 </code></pre>
 <h2><a class="header" href="#setting-the-standard-library" id="setting-the-standard-library">Setting the standard library</a></h2>
@@ -183,6 +183,11 @@ empty_if = { comments_count = false }
 </code></pre>
 <p>...at the top of selene.toml. You can learn more about the standard library format on the <a href="./std.html">standard library guide</a>. The standard library given can either be one of the builtin ones (currently only <code>lua51</code> and <code>lua52</code>) or the filename of a standard library file in this format. For example, if we had a file named <code>special.toml</code>, we would write:</p>
 <pre><code class="language-toml">std = &quot;special&quot;
+</code></pre>
+<h3><a class="header" href="#chaining-the-standard-library" id="chaining-the-standard-library">Chaining the standard library</a></h3>
+<p>We can chain together multiple standard libraries by simply using a plus sign (<code>+</code>) in between the names.</p>
+<p>For example, if we had <code>game.toml</code> and <code>engine.toml</code> standard libraries, we could chain them together like so:</p>
+<pre><code class="language-toml">std = &quot;game+engine&quot;
 </code></pre>
 
                     </main>
