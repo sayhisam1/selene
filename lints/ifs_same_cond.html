@@ -158,7 +158,7 @@
     print(1)
 elseif foo then
     print(1)
-then
+end
 </code></pre>
 <h2><a class="header" href="#remarks" id="remarks">Remarks</a></h2>
 <p>This ignores conditions that could have side effects, such as function calls. This will not lint:</p>
@@ -166,7 +166,7 @@ then
     print(1)
 elseif foo() then
     print(1)
-then
+end
 </code></pre>
 <p>...as the result of <code>foo()</code> could be different the second time it is called.</p>
 
