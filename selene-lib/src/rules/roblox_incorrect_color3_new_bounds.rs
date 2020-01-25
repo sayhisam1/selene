@@ -82,7 +82,7 @@ impl Visitor<'_> for Color3BoundsVisitor {
                         if binop.is_none();
                         if let ast::Value::Number(value) = &**value;
                         if let Ok(number) = value.to_string().parse::<f32>();
-                        if number > 1.0;
+                        if number > 1.0 || number < 0;
                         then {
                             self.positions.push(range(argument));
                         }
